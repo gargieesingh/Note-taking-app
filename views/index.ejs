@@ -14,9 +14,12 @@
 
         <h1 class="font-bold">New Post</h1>
 
-        <form action="/newpost" class="flex flex-col gap-5">
+        <form action="/newpost" method="post" class="flex flex-col gap-5">
             <input type="text" placeholder="Title" class="rounded-xs border-2 border-white py-3 px-2 bg-gray-200 text-black" name="title">
-            <textarea name="Content" placeholder="Write something here..." class="resize-none border-2 border-white rounded-xs py-3 px-2 bg-gray-200 text-black"></textarea>
+
+            <textarea name="content" placeholder="Write something here..." class="resize-none border-2 border-white rounded-xs py-3 px-2 bg-gray-200 text-black"></textarea>
+
+            <button class="py-2 px-3 bg-teal-600 rounded-xs hover:bg-teal-700 cursor-pointer hover:scale-[0.98] font-bold hover:shadow-2xl">Post</button>
         </form>
 
     </div>
