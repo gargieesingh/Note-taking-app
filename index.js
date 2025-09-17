@@ -70,13 +70,24 @@ app.post("/newpost", function(req, res){
     fs.writeFile(`./posts/${req.body.title.split(' ').join('')}.txt`, req.body.content, function(err){
         if (err) {
             console.error(err);
-            res.send("Something went wrong, could not crate the file.");
+            res.send("Something went wrong, could not create the file.");
             return;
         }else{
             res.redirect("/");
         }
     })
 })
+
+app.get("/file/:filename", function(req, res){
+    fs.readFile(`./posts/${req.params.filename}`, "utf-8", function(err, filedata){
+        if(err){
+            throw err;
+        }else{
+            res.render('show', {filename: req.params.filename, filedata: filedata});
+        }
+    })
+})
+
 //start the server
 app.listen(3000, ()=>{
     console.log("Started the server");
