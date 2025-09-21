@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/stylesheets/src/output.css">
     <!-- dont use public in path name, as public folder itself become the root of static files -->
 </head>
-<body class="h-screen w-screen bg-cyan-950 overflow-hidden">
+<body class="h-screen w-screen bg-cyan-950 overflow-x-hidden">
 
 
     <div class="create h-fit max-w-screen bg-cyan-900 m-16 text-white flex flex-col gap-5 rounded-xl p-5 shadow-2xl">
@@ -24,12 +24,21 @@
 
     </div>
 
-    <div class="posts">
-        <% if(files.length > 0) %>
-            <% files.forEach(funciton(val){ %>
-                <div>
-                    
+    <div class="posts flex flex-wrap m-16 gap-4 bg-cyan-900 h-fit w-fit rounded-xl shadow-2xl p-5 justify-center items-center">
+        <% if(posts.length > 0) { %>
+            <% posts.forEach(function(val){ %>
+                <div class="rounded-2xl h-40 w-fit flex flex-col text-center p-3 justify-between bg-gray-300 shadow-2xl">
+                    <h1 class="font-mono font-extrabold"><%= val %></h1>
+                    <div>
+                        <a class="py-2 px-3 bg-teal-600 rounded-xs hover:bg-teal-700 m-1 " href="">Read</a>
+                        <a class="py-2 px-3 bg-teal-600 rounded-xs hover:bg-teal-700 m-1" href="">Delete</a>
+                        <a class="py-2 px-3 bg-teal-600 rounded-xs hover:bg-teal-700 m-1" href="">Edit</a>
+                    </div>
                 </div>
+            <% }) %>
+        <% } else { %> 
+            <h3>No posts yet!</h3>
+        <% } %>
     </div>
     
 </body>

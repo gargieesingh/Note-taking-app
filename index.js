@@ -13,7 +13,9 @@ app.set('view engine', 'ejs');
 
 //route setup
 app.get('/', function(req, res){
-    res.render("index");
+    fs.readdir(`./posts`, function(err, posts){
+        res.render("index", {posts : posts});
+    })
 })
 
 //route for new post 
@@ -78,15 +80,15 @@ app.post("/newpost", function(req, res){
     })
 })
 
-app.get("/file/:filename", function(req, res){
-    fs.readFile(`./posts/${req.params.filename}`, "utf-8", function(err, filedata){
-        if(err){
-            throw err;
-        }else{
-            res.render('show', {filename: req.params.filename, filedata: filedata});
-        }
-    })
-})
+// app.get("/file/:filename", function(req, res){
+//     fs.readFile(`./posts/${req.params.filename}`, "utf-8", function(err, filedata){
+//         if(err){
+//             throw err;
+//         }else{
+//             res.render('show', {filename: req.params.filename, filedata: filedata});
+//         }
+//     })
+// })
 
 //start the server
 app.listen(3000, ()=>{
