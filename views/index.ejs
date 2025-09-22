@@ -27,11 +27,15 @@
     <div class="posts flex flex-wrap m-16 gap-4 bg-cyan-900 h-fit w-fit rounded-xl shadow-2xl p-5 justify-center items-center">
         <% if(posts.length > 0) { %>
             <% posts.forEach(function(val){ %>
-                <div class="rounded-2xl h-40 w-fit flex flex-col text-center p-3 justify-between bg-gray-300 shadow-2xl">
+                <div class="rounded-xs h-40 w-fit flex flex-col text-center p-3 justify-between bg-gray-300 shadow-2xl">
                     <h1 class="font-mono font-extrabold"><%= val %></h1>
                     <div>
                         <a class="py-2 px-3 bg-teal-600 rounded-xs hover:bg-teal-700 m-1 " href="">Read</a>
-                        <a class="py-2 px-3 bg-teal-600 rounded-xs hover:bg-teal-700 m-1" href="">Delete</a>
+
+                        <form action="/delete/${<%= val %>}" method="post">
+                            <button type="submit" class="py-2 px-3 bg-teal-600 rounded-xs hover:bg-teal-700 m-1">Delete</button>
+                        </form>
+
                         <a class="py-2 px-3 bg-teal-600 rounded-xs hover:bg-teal-700 m-1" href="">Edit</a>
                     </div>
                 </div>
